@@ -40,7 +40,7 @@ We can run the getAccess() function through the browser by console tab or browsi
 
 By decoding, we will get the original token and we should set that in our cookie
 
-![Session cookie](./img/Session.jpg)
+![Session cookie](./img/session.jpg)
 
 ## [Q3] What is the content of user.txt?
 Now let's refresh the page.
