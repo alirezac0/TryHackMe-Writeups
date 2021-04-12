@@ -1,4 +1,4 @@
-![OSINT DOJO logo](./img/logo.png)
+![OSINT DOJO logo](./img/Logo.png)
 # Sakura
 Use a variety of OSINT techniques to solve [this room](https://tryhackme.com/room/sakura) created by the OSINT Dojo.
 
