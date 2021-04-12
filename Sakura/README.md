@@ -28,7 +28,7 @@ Finally, you will find her LinkedIn and GitHub accounts.
 There is a PGP repository on her GitHub page and a public key that you can get information from that.
 [Additional resource](http://www.macfreek.nl/memory/Analysing_PGP_Identities)
 
-![PGP REPO](./img/PGP.jpg)
+![PGP REPO](./img/PGP.JPG)
 
 ### [What is the attacker's full real name?]
 You can find that on her LinkedIn page.
