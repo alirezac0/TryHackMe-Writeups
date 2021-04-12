@@ -109,7 +109,11 @@ You can see Washington monument in this picture. So you should search for neares
 
 ### [What airport did the attacker have their last layover in?]
 
+You should find that by the information given in one of her tweets:
 
+![JAL airline](./img/jal.jpg)
+
+Maybe searching for JAL Sakura Lounge? :D (There are some airports for that, but the one near Tokyo is the answer)
 
 
 ### [What lake can be seen in the map shared by the attacker as they were on their final flight home?]
@@ -120,3 +124,8 @@ You should answer the next question first, then using google map and finding rou
 ### [What city does the attacker likely consider "home"?]
 
 You can answer this question by information you found in deeppaste site.
+
+---
+
+special thanks to my [teammate](https://github.com/l14ck3r0x01) ❤️
+
