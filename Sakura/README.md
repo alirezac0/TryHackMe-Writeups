@@ -11,7 +11,7 @@ Read Background and Instructions sections.
 Read Background and Instructions sections.
 
 ### [What username does the attacker go by?]
-You can find the answer by looking at metadata of the given [svg]((https://raw.githubusercontent.com/OsintDojo/OsintDojo.github.io/d846483eb41dd4fdb6d00ac84ecdb4a66be6a191/TryHackMe/Sakura/sakurapwnedletter.svg)) used by the attacker
+You can find the answer by looking at metadata of the given [svg](https://raw.githubusercontent.com/OsintDojo/OsintDojo.github.io/d846483eb41dd4fdb6d00ac84ecdb4a66be6a191/TryHackMe/Sakura/sakurapwnedletter.svg) used by the attacker
     
     Export-filename:	/home/{REDACTED}/Desktop/pwnedletter.png
 
