@@ -111,7 +111,7 @@ You can see Washington monument in this picture. So you should search for neares
 
 You should find that by the information given in one of her tweets:
 
-![JAL airline](./img/jal.jpg)
+![JAL airline](./img/JAL.jpg)
 
 Maybe searching for JAL Sakura Lounge? :D (There are some airports for that, but the one near Tokyo is the answer)
 
