@@ -244,6 +244,7 @@ szymex@cchq:~$cat user.txt
 THM{REDACTED}
 ```
 
+---
 
 ### [Q3, Find out what Tux is working on]
 
@@ -395,6 +396,9 @@ Now, you can change to user "tux":
 tux@cchq:~$ cat user.txt 
 THM{REDACTED}
 ```
+
+---
+
 ### [Q4, Find out what Varg is working on]
 
 
@@ -441,7 +445,8 @@ tux@cchq:/home/varg/cooctOS_src/.git$ cat logs/HEAD
 So what was commited ?
 
 ```
-tux@cchq:/home/varg/cooctOS_src/.git$ git show 8b8daa41120535c569d0b99c6859a1699227d086                                    commit 8b8daa41120535c569d0b99c6859a1699227d086 (HEAD -> master)
+tux@cchq:/home/varg/cooctOS_src/.git$ git show 8b8daa41120535c569d0b99c6859a1699227d086 
+commit 8b8daa41120535c569d0b99c6859a1699227d086 (HEAD -> master)
 Author: Vargles <varg@cchq.noot>
 Date:   Sat Feb 20 15:47:21 2021 +0000
     Removed CooctOS login script for now
@@ -548,6 +553,7 @@ CooctOS.py  cooctOS_src  user.txt
 varg@cchq:~$ cat user.txt 
 THM{REDACTED}
 ```
+---
 
 ### [Q5, Get full root privileges]
 
