@@ -99,7 +99,7 @@ Login page:
 
 
 
-As you can see in the nmap result section, you may be able to mount rpc:
+As you can see in the nmap result section, you may be able to mount [NFS](https://www.datto.com/blog/what-is-nfs-file-share):
 
 ```
  ~ showmount -e 10.10.150.214                                       
